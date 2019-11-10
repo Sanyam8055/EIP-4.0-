@@ -1,6 +1,6 @@
 # EIP 4
 ## Deep learning Course by Inkers Technology Phase 1
-Problem Statement
+**Problem Statement**</br>
 Change the model in such a way that after executing the code below, your accuracy print out is more than 99.0</br>
 score = model.evaluate(X_text, Y_text, verbose=0)</br>
 print(score)</br>
