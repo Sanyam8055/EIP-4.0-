@@ -21,42 +21,24 @@ Change the CODE file to achieve 99.4 percent accuracy within 15 k parameters and
 Model: "sequential_1"
 _________________________________________________________________
 	Layer (type)                 Output Shape              Param #   
-=================================================================
-_________________________________________________________________
 	conv2d_1 (Conv2D)            (None, 26, 26, 16)        160       
-_________________________________________________________________
 	batch_normalization_1 (Batch (None, 26, 26, 16)        64        
-_________________________________________________________________
 	conv2d_2 (Conv2D)            (None, 24, 24, 32)        4640      
-_________________________________________________________________
 	batch_normalization_2 (Batch (None, 24, 24, 32)        128       
-_________________________________________________________________
 	conv2d_3 (Conv2D)            (None, 24, 24, 16)        528       
-_________________________________________________________________
 	max_pooling2d_1 (MaxPooling2 (None, 12, 12, 16)        0         
-_________________________________________________________________
 	separable_conv2d_1 (Separabl (None, 10, 10, 16)        416       
-_________________________________________________________________
 	batch_normalization_3 (Batch (None, 10, 10, 16)        64        
-_________________________________________________________________
 	conv2d_4 (Conv2D)            (None, 8, 8, 16)          2320      
-_________________________________________________________________
 	separable_conv2d_2 (Separabl (None, 6, 6, 16)          416       
-_________________________________________________________________
 	batch_normalization_4 (Batch (None, 6, 6, 16)          64        
-_________________________________________________________________
 	conv2d_5 (Conv2D)            (None, 4, 4, 16)          2320      
-_________________________________________________________________
 	batch_normalization_5 (Batch (None, 4, 4, 16)          64        
-_________________________________________________________________
 	conv2d_6 (Conv2D)            (None, 1, 1, 10)          2570      
-_________________________________________________________________
 	batch_normalization_6 (Batch (None, 1, 1, 10)          40        
-_________________________________________________________________
 	flatten_1 (Flatten)          (None, 10)                0         
-_________________________________________________________________
-	activation_1 (Activation)    (None, 10)                0         
-=================================================================
+	activation_1 (Activation)    (None, 10)                0  
+_________________________________________________________________ </br>
 Total params: 13,794</br>
 Trainable params: 13,582</br>
 Non-trainable params: 212
@@ -155,4 +137,9 @@ Epoch 00020: LearningRateScheduler setting learning rate to 0.000424869.
 
 score = model.evaluate(X_test, Y_test, verbose=0)
 print(score)
-[0.021678498815186322, 0.9942]
+[0.021678498815186322, 0.9942] </br>
+The strategy I used to get 99.42 test accuracy was that I removed all the dropouts since it reduced the non trainable features. Instead of dropouts I used Separable Convolution layers to reduce the parameters.
+I didn't reduce the kernel to 10 at the middle of the model since it was being reduced to 10 at the end.
+I removed batch normalization from one of the layer because it trained some of the non trainable features which led to overfitting of the model.
+
+
