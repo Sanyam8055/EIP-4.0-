@@ -135,9 +135,10 @@ Epoch 00020: LearningRateScheduler setting learning rate to 0.000424869.
 60000/60000 [==============================] - 22s 373us/step - loss: 0.0087 - acc: 0.9979 - val_loss: 0.0217 - val_acc: 0.9942
 <keras.callbacks.History at 0x7f5f2b4dfac8>
 
-score = model.evaluate(X_test, Y_test, verbose=0)
-print(score)
+score = model.evaluate(X_test, Y_test, verbose=0)</br>
+print(score)</br>
 [0.021678498815186322, 0.9942] </br>
+## Strategy
 The strategy I used to get 99.42 test accuracy was that I removed all the dropouts since it reduced the non trainable features. Instead of dropouts I used Separable Convolution layers to reduce the parameters.
 I didn't reduce the kernel to 10 at the middle of the model since it was being reduced to 10 at the end.
 I removed batch normalization from one of the layer because it trained some of the non trainable features which led to overfitting of the model.
