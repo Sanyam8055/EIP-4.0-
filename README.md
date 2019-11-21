@@ -16,48 +16,50 @@ print(score)</br>
 - **Activation Function** decides which neurons would be active in the hidden layers
 - **Receptive Field** is the part of input image on which the features are checked by the convolution layer.
 ## Assignment 2
-
-Layer (type)                 Output Shape              Param #   
+**Problem Statement**</br>
+Change the CODE file to achieve 99.4 percent accuracy within 15 k parameters and under 20 Epochs.</br>
+Model: "sequential_1"
+_________________________________________________________________
+	Layer (type)                 Output Shape              Param #   
 =================================================================
-conv2d_37 (Conv2D)           (None, 26, 26, 16)        160       
 _________________________________________________________________
-batch_normalization_36 (Batc (None, 26, 26, 16)        64        
+	conv2d_1 (Conv2D)            (None, 26, 26, 16)        160       
 _________________________________________________________________
-conv2d_38 (Conv2D)           (None, 24, 24, 32)        4640      
+	batch_normalization_1 (Batch (None, 26, 26, 16)        64        
 _________________________________________________________________
-batch_normalization_37 (Batc (None, 24, 24, 32)        128       
+	conv2d_2 (Conv2D)            (None, 24, 24, 32)        4640      
 _________________________________________________________________
-conv2d_39 (Conv2D)           (None, 24, 24, 16)        528       
+	batch_normalization_2 (Batch (None, 24, 24, 32)        128       
 _________________________________________________________________
-max_pooling2d_6 (MaxPooling2 (None, 12, 12, 16)        0         
+	conv2d_3 (Conv2D)            (None, 24, 24, 16)        528       
 _________________________________________________________________
-separable_conv2d_7 (Separabl (None, 10, 10, 16)        416       
+	max_pooling2d_1 (MaxPooling2 (None, 12, 12, 16)        0         
 _________________________________________________________________
-batch_normalization_38 (Batc (None, 10, 10, 16)        64        
+	separable_conv2d_1 (Separabl (None, 10, 10, 16)        416       
 _________________________________________________________________
-conv2d_40 (Conv2D)           (None, 8, 8, 16)          2320      
+	batch_normalization_3 (Batch (None, 10, 10, 16)        64        
 _________________________________________________________________
-separable_conv2d_8 (Separabl (None, 6, 6, 16)          416       
+	conv2d_4 (Conv2D)            (None, 8, 8, 16)          2320      
 _________________________________________________________________
-batch_normalization_39 (Batc (None, 6, 6, 16)          64        
+	separable_conv2d_2 (Separabl (None, 6, 6, 16)          416       
 _________________________________________________________________
-conv2d_41 (Conv2D)           (None, 4, 4, 16)          2320      
+	batch_normalization_4 (Batch (None, 6, 6, 16)          64        
 _________________________________________________________________
-batch_normalization_40 (Batc (None, 4, 4, 16)          64        
+	conv2d_5 (Conv2D)            (None, 4, 4, 16)          2320      
 _________________________________________________________________
-conv2d_42 (Conv2D)           (None, 1, 1, 10)          2570      
+	batch_normalization_5 (Batch (None, 4, 4, 16)          64        
 _________________________________________________________________
-batch_normalization_41 (Batc (None, 1, 1, 10)          40        
+	conv2d_6 (Conv2D)            (None, 1, 1, 10)          2570      
 _________________________________________________________________
-flatten_6 (Flatten)          (None, 10)                0         
+	batch_normalization_6 (Batch (None, 1, 1, 10)          40        
 _________________________________________________________________
-activation_6 (Activation)    (None, 10)                0         
+	flatten_1 (Flatten)          (None, 10)                0         
+_________________________________________________________________
+	activation_1 (Activation)    (None, 10)                0         
 =================================================================
-Total params: 13,794
-Trainable params: 13,582
+Total params: 13,794</br>
+Trainable params: 13,582</br>
 Non-trainable params: 212
-_________________________________________________________________
-
 
 </br>
 from keras.optimizers import SGD
