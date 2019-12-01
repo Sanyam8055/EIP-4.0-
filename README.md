@@ -154,12 +154,13 @@ you've mentioned the output size for each layer</br>
 you've mentioned the receptive field for each layer</br>
 runs for 50 epochs</br>
 beats the validation score within 50 epochs</br>
+# Accuracy of the base model was 82.93
 /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(48, (3, 3), input_shape=(32, 32, 3...)`
   
 /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:5: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(48, (3, 3))`
   """
 /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:10: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(96, (3, 3), padding="same")`
-  # Remove the CWD from sys.path while we load stuff.
+ 
 /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:13: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(96, (3, 3))`
   del sys.path[0]
 /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:18: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(192, (3, 3), padding="same")`
@@ -305,4 +306,4 @@ Epoch 50/50
 390/390 [==============================] - 28s 71ms/step - loss: 0.4212 - acc: 0.8498 - val_loss: 0.5016 - val_acc: 0.8350
 Model took 1398.99 seconds to train
 
-##Accuracy on test data is: 83.50
+## Accuracy on test data is: 83.50
