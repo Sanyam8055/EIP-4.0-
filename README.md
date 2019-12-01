@@ -142,5 +142,167 @@ print(score)</br>
 The strategy I used to get 99.42 test accuracy was that I removed all the dropouts since it reduced the non trainable features. Instead of dropouts I used Separable Convolution layers to reduce the parameters.
 I didn't reduce the kernel to 10 at the middle of the model since it was being reduced to 10 at the end.
 I removed batch normalization from one of the layer because it trained some of the non trainable features which led to overfitting of the model.
+## Assignment 3
+**Problem Statement**</br>
+Run the network (base network) for 50 epochs, report Validation Accuracy after 50 epochs. </br>
+Add new cells at the bottom of the code, and write your own network such that:</br>
+it uses depthwise separable convolution ONLY (no Conv2D)</br>
+it uses BatchNormalization </br>
+has less than 100,000 parameters</br>
+it uses proper dropout values</br>
+you've mentioned the output size for each layer</br>
+you've mentioned the receptive field for each layer</br>
+runs for 50 epochs</br>
+beats the validation score within 50 epochs</br>
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:2: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(48, (3, 3), input_shape=(32, 32, 3...)`
+  
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:5: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(48, (3, 3))`
+  """
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:10: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(96, (3, 3), padding="same")`
+  # Remove the CWD from sys.path while we load stuff.
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:13: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(96, (3, 3))`
+  del sys.path[0]
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:18: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(192, (3, 3), padding="same")`
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:21: UserWarning: Update your `SeparableConv2D` call to the Keras 2 API: `SeparableConv2D(192, (3, 3))`
+Model: "sequential_40"
+_________________________________________________________________
+	Layer (type)                 Output Shape              Param #   
+	separable_conv2d_236 (Separa (None, 30, 30, 48)        219       
+	batch_normalization_37 (Batc (None, 30, 30, 48)        192       
+	activation_253 (Activation)  (None, 30, 30, 48)        0         
+	separable_conv2d_237 (Separa (None, 28, 28, 48)        2784      
+	batch_normalization_38 (Batc (None, 28, 28, 48)        192       
+	activation_254 (Activation)  (None, 28, 28, 48)        0         
+	max_pooling2d_113 (MaxPoolin (None, 14, 14, 48)        0         
+	dropout_119 (Dropout)        (None, 14, 14, 48)        0         
+	separable_conv2d_238 (Separa (None, 14, 14, 96)        5136      
+	batch_normalization_39 (Batc (None, 14, 14, 96)        384       
+	activation_255 (Activation)  (None, 14, 14, 96)        0         
+	separable_conv2d_239 (Separa (None, 12, 12, 96)        10176     
+	batch_normalization_40 (Batc (None, 12, 12, 96)        384       
+	activation_256 (Activation)  (None, 12, 12, 96)        0         
+	max_pooling2d_114 (MaxPoolin (None, 6, 6, 96)          0         
+	dropout_120 (Dropout)        (None, 6, 6, 96)          0         
+	separable_conv2d_240 (Separa (None, 6, 6, 192)         19488     
+	batch_normalization_41 (Batc (None, 6, 6, 192)         768       
+	activation_257 (Activation)  (None, 6, 6, 192)         0         
+	separable_conv2d_241 (Separa (None, 4, 4, 192)         38784     
+	batch_normalization_42 (Batc (None, 4, 4, 192)         768       
+	activation_258 (Activation)  (None, 4, 4, 192)         0         
+	max_pooling2d_115 (MaxPoolin (None, 2, 2, 192)         0         
+	dropout_121 (Dropout)        (None, 2, 2, 192)         0         
+	separable_conv2d_242 (Separa (None, 1, 1, 10)          2698      
+	flatten_34 (Flatten)         (None, 10)                0         
+	activation_259 (Activation)  (None, 10)                0       
+_________________________________________________________________
+Total params: 81,973</br>
+Trainable params: 80,629</br>
+Non-trainable params: 1,344</br>
 
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:16: UserWarning: The semantics of the Keras 2 argument `steps_per_epoch` is not the same as the Keras 1 argument `samples_per_epoch`. `steps_per_epoch` is the number of batches to draw from the generator at each epoch. Basically steps_per_epoch = samples_per_epoch/batch_size. Similarly `nb_val_samples`->`validation_steps` and `val_samples`->`steps` arguments have changed. Update your method calls accordingly.
+  app.launch_new_instance()
+/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:16: UserWarning: Update your `fit_generator` call to the Keras 2 API: `fit_generator(<keras_pre..., validation_data=(array([[[..., verbose=1, callbacks=[<keras.ca..., steps_per_epoch=390, epochs=50)`
+  app.launch_new_instance()
+Epoch 1/50
+390/390 [==============================] - 37s 95ms/step - loss: 1.3742 - acc: 0.5014 - val_loss: 1.3988 - val_acc: 0.5484
+Epoch 2/50
+390/390 [==============================] - 28s 71ms/step - loss: 1.0189 - acc: 0.6352 - val_loss: 1.0049 - val_acc: 0.6564
+Epoch 3/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.8870 - acc: 0.6841 - val_loss: 0.9708 - val_acc: 0.6715
+Epoch 4/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.8030 - acc: 0.7172 - val_loss: 0.7382 - val_acc: 0.7411
+Epoch 5/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.7512 - acc: 0.7372 - val_loss: 0.7794 - val_acc: 0.7339
+Epoch 6/50
+390/390 [==============================] - 28s 72ms/step - loss: 0.7100 - acc: 0.7498 - val_loss: 0.6611 - val_acc: 0.7721
+Epoch 7/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.6811 - acc: 0.7613 - val_loss: 0.6688 - val_acc: 0.7681
+Epoch 8/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.6554 - acc: 0.7693 - val_loss: 0.6246 - val_acc: 0.7828
+Epoch 9/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.6346 - acc: 0.7767 - val_loss: 0.6536 - val_acc: 0.7733
+Epoch 10/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.6146 - acc: 0.7847 - val_loss: 0.6117 - val_acc: 0.7893
+Epoch 11/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5993 - acc: 0.7900 - val_loss: 0.6117 - val_acc: 0.7917
+Epoch 12/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5869 - acc: 0.7963 - val_loss: 0.6609 - val_acc: 0.7733
+Epoch 13/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5737 - acc: 0.7977 - val_loss: 0.6122 - val_acc: 0.7910
+Epoch 14/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5614 - acc: 0.8036 - val_loss: 0.5749 - val_acc: 0.8034
+Epoch 15/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5564 - acc: 0.8051 - val_loss: 0.5811 - val_acc: 0.8017
+Epoch 16/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5428 - acc: 0.8090 - val_loss: 0.6066 - val_acc: 0.7936
+Epoch 17/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5350 - acc: 0.8123 - val_loss: 0.5911 - val_acc: 0.8003
+Epoch 18/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5282 - acc: 0.8154 - val_loss: 0.5835 - val_acc: 0.8018
+Epoch 19/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5220 - acc: 0.8183 - val_loss: 0.5507 - val_acc: 0.8134
+Epoch 20/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5188 - acc: 0.8180 - val_loss: 0.5389 - val_acc: 0.8157
+Epoch 21/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5082 - acc: 0.8220 - val_loss: 0.5393 - val_acc: 0.8175
+Epoch 22/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.5057 - acc: 0.8232 - val_loss: 0.5337 - val_acc: 0.8194
+Epoch 23/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4997 - acc: 0.8252 - val_loss: 0.5378 - val_acc: 0.8194
+Epoch 24/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4949 - acc: 0.8271 - val_loss: 0.5372 - val_acc: 0.8167
+Epoch 25/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4923 - acc: 0.8270 - val_loss: 0.5364 - val_acc: 0.8172
+Epoch 26/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4874 - acc: 0.8295 - val_loss: 0.5335 - val_acc: 0.8220
+Epoch 27/50
+390/390 [==============================] - 28s 72ms/step - loss: 0.4803 - acc: 0.8317 - val_loss: 0.5476 - val_acc: 0.8167
+Epoch 28/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4789 - acc: 0.8309 - val_loss: 0.5294 - val_acc: 0.8200
+Epoch 29/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4696 - acc: 0.8356 - val_loss: 0.5303 - val_acc: 0.8207
+Epoch 30/50
+390/390 [==============================] - 28s 72ms/step - loss: 0.4757 - acc: 0.8317 - val_loss: 0.5212 - val_acc: 0.8233
+Epoch 31/50
+390/390 [==============================] - 28s 72ms/step - loss: 0.4622 - acc: 0.8373 - val_loss: 0.5233 - val_acc: 0.8237
+Epoch 32/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4666 - acc: 0.8350 - val_loss: 0.5086 - val_acc: 0.8278
+Epoch 33/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4609 - acc: 0.8381 - val_loss: 0.5294 - val_acc: 0.8211
+Epoch 34/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4654 - acc: 0.8360 - val_loss: 0.5205 - val_acc: 0.8250
+Epoch 35/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4588 - acc: 0.8376 - val_loss: 0.5180 - val_acc: 0.8275
+Epoch 36/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4512 - acc: 0.8407 - val_loss: 0.5183 - val_acc: 0.8253
+Epoch 37/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4511 - acc: 0.8402 - val_loss: 0.5256 - val_acc: 0.8237
+Epoch 38/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4443 - acc: 0.8433 - val_loss: 0.5101 - val_acc: 0.8287
+Epoch 39/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4497 - acc: 0.8418 - val_loss: 0.5136 - val_acc: 0.8288
+Epoch 40/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4415 - acc: 0.8436 - val_loss: 0.5098 - val_acc: 0.8299
+Epoch 41/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4398 - acc: 0.8445 - val_loss: 0.5224 - val_acc: 0.8260
+Epoch 42/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4441 - acc: 0.8431 - val_loss: 0.5151 - val_acc: 0.8290
+Epoch 43/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4389 - acc: 0.8442 - val_loss: 0.5060 - val_acc: 0.8312
+Epoch 44/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4337 - acc: 0.8464 - val_loss: 0.5074 - val_acc: 0.8309
+Epoch 45/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4351 - acc: 0.8445 - val_loss: 0.5061 - val_acc: 0.8319
+Epoch 46/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4305 - acc: 0.8471 - val_loss: 0.5131 - val_acc: 0.8305
+Epoch 47/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4300 - acc: 0.8463 - val_loss: 0.5107 - val_acc: 0.8300
+Epoch 48/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4278 - acc: 0.8482 - val_loss: 0.5038 - val_acc: 0.8330
+Epoch 49/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4258 - acc: 0.8483 - val_loss: 0.5137 - val_acc: 0.8277
+Epoch 50/50
+390/390 [==============================] - 28s 71ms/step - loss: 0.4212 - acc: 0.8498 - val_loss: 0.5016 - val_acc: 0.8350
+Model took 1398.99 seconds to train
 
+##Accuracy on test data is: 83.50
