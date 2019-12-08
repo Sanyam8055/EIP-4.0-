@@ -306,4 +306,11 @@ Epoch 50/50
 390/390 [==============================] - 28s 71ms/step - loss: 0.4212 - acc: 0.8498 - val_loss: 0.5016 - val_acc: 0.8350
 Model took 1398.99 seconds to train
 
-## Accuracy on test data is: 83.50
+### Accuracy on test data is: 83.50
+## Assignment 4b
+**Problem Statement**</br>
+To create ResNet18 Network </br>
+Train on CIFAR10 data.</br>  
+Run for 50 Epochs and cross 88% Validation Accuracy</br>
+Show GradCam results for 10 images.</br> 
+### I got an Accuracy of 88.06% within 50 epochs.
