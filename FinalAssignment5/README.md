@@ -8,7 +8,7 @@ You cannot use transfer learning and train your model from scratch</br>
 Since this is a blind assignment, we do not know the final achievable accuracy. </br>
 Marks would be allotted percentile-wise.</br>
 Your final accuracy matters the most. </br>
-## Model
+## Model RESNET50V2
     Layer (type)                    Output Shape         Param #     Connected to                     
     input_3 (InputLayer)            (None, 224, 224, 3)  0                                       
     conv1_pad (ZeroPadding2D)       (None, 230, 230, 3)  0           input_3[0][0]              
